@@ -21,7 +21,8 @@ class RoomsController < ApplicationController
  end
 
  def show 
- 
+  @comment = Comment.new
+  @comments = @room.comments.includes(:user)
  end
 
  def edit

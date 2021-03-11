@@ -6,5 +6,8 @@ resources :rooms do
   collection do
     get 'search'
   end
+
+  resources :comments, only: :create
+  
 end
 end
