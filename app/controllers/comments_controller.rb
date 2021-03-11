@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
 
   def create
-    Comment.create(comment_params)
-    redirect_to "/rooms/#{comment.room.id}"
+    comment = Comment.create(comment_params)
+    redirect_to room_path(comment.room.id)
   end
 
   private
