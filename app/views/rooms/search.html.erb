@@ -1,0 +1,35 @@
+    <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "駅名などを入力してください", class: "input-box" %>
+     <%= form.submit "検索", class: "search-icon" %>
+    <% end %>
+
+
+    <ul class='item-lists'>
+
+      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+    
+     <% @rooms.each do |room| %>
+      <li class='list'>
+        <%= link_to room_path(room.id) do %>
+        <div class='item-img-content'>
+          <%= image_tag room.image, class: "item-img" %>
+        </div>
+
+
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= room.station %>
+          </h3>
+          <div class='item-price'>
+            <span><%= room.price %>円<br></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+     
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
