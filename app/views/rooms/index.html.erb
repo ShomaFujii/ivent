@@ -9,12 +9,11 @@
     <p class='service-explain'>
     
     </p>
-        <form class="search-form" action="#">
-      <input class='input-box' placeholder='住所や駅名などを入力してください'>
-      <button class="search-button">
-        <%= image_tag "search.png", class:"search-icon" %>
-      </button>
-    </form>
+    <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "駅名などを入力してください", class: "input-box" %>
+     <%= form.submit "検索", class: "search-icon" %>
+    <% end %>
+
     <div class='store-btn'>
       <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
       <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
@@ -124,29 +123,31 @@
 
   <%# 商品一覧 %>
   <div class='item-contents'>
-    <h2 class='title'>ピックアップカテゴリー</h2>
+    <h2 class='title'>ご利用可能なお部屋</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
 
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+     <% if @rooms.present? %>
+     <% @rooms.each do |room| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to room_path(room.id) do %>
         <div class='item-img-content'>
-          <%= image_tag "item-sample.png", class: "item-img" %>
+          <%= image_tag room.image, class: "item-img" %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
+  
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
+
+
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= "商品名" %>
+            <%= room.station %>
           </h3>
           <div class='item-price'>
-            <span><%= "販売価格" %>円<br><%= '配送料負担' %></span>
+            <span><%= room.price %>円<br></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -154,11 +155,14 @@
           </div>
         </div>
         <% end %>
+        <% end %>
       </li>
+      
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
+      <% else %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -176,13 +180,14 @@
         </div>
         <% end %>
       </li>
+      <% end %>
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
   </div>
   <%# /商品一覧 %>
 </div>
-<%= link_to('#', class: 'purchase-btn') do %>
+<%= link_to(new_room_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
