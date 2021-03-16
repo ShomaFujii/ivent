@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root to: "rooms#index"
 
@@ -8,6 +9,6 @@ resources :rooms do
   end
 
   resources :comments, only: :create
-  
+  resources :reviews, only: [:index, :create]
 end
 end

@@ -15,10 +15,45 @@
       <span class="item-price">
         <%= "¥" + "#{@room.price}" %> 
       </span>
-      <span class="item-postage">
+      <span id ="a">
         <%= @room.address %>
       </span>
     </div>
+<div id=map></div> 
+
+<script>
+  let map
+
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @room.latitude %>, lng: <%= @room.longitude %>},
+          zoom: 12,
+      });
+
+
+  
+          (function(){
+          var contentString = "住所：<%= @room.address %>"; 
+
+          var marker = new google.maps.Marker({
+              position:{lat: <%= @room.latitude %>, lng: <%= @room.longitude %>},
+              map: map,
+              title: contentString
+          });
+
+          })();
+  
+      }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>
+
+<style type="text/css">
+  #map { height: 200px;
+         width: 70%;}
+</style>
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
  <% if user_signed_in? && (current_user.id == @room.user_id)  %>
@@ -30,7 +65,36 @@
     <%# <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
+<section class="section mt-6">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="card mb-6">
+            <header class="card-header">
+              <p class="card-header-title">
+                <%= @room.user.nickname %>
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <div class="content average-score">
+                  <div class="star-rating mb-2">
+                    <div class="star-rating-front" style="width: %">★★★★★</div>
+                    <div class="star-rating-back">★★★★★</div>
+                  </div>
+                  <div class="average-score-display ml-3 pt-2">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer class="card-footer">
+             
+          </div>
 
+     
+    </div>
+  </div>
+</section>
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
     <div class="item-explain-box">
