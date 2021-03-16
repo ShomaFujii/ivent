@@ -22,5 +22,4 @@ class User < ApplicationRecord
 
          has_many :rooms
          has_many :comments
-         has_many :reviw
 end

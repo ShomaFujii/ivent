@@ -23,7 +23,6 @@ class RoomsController < ApplicationController
  def show 
   @comment = Comment.new
   @comments = @room.comments.includes(:user)
-  @review = Review.new
  end
 
  def edit

@@ -2,9 +2,7 @@ class CreateRooms < ActiveRecord::Migration[6.0]
   def change
     create_table :rooms do |t|
 
-      t.text  :address,              null: false
-      t.float  :latitude
-      t.float  :longitude
+      t.string  :address,              null: false
       t.string  :station,      null: false
       t.text    :discribe,          null: false
       t.integer :price,       null: false

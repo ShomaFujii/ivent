@@ -1,15 +1,12 @@
 class Room < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  has_many :comments,dependent: :destroy
-
-  geocoded_by :address
-  before_validation :geocode
+  has_many :comments
 
   def self.search(search)
     if search != ""
-      Room.where('address LIKE(?) OR station LIKE(?)', "%#{search}%", "%#{search}%")
-    
+      Room.where('station LIKE(?)', "%#{search}%")
+      Room.where('address LIKE(?)', "%#{search}%")
     else
       Room.all
     end
@@ -35,7 +32,4 @@ class Room < ApplicationRecord
   belongs_to :kitchen
 
   validates :pet_id,:air_conditioner_id,:toilet_id,:bathroom_id,:kitchen_id, numericality: { other_than: 1 }
-
-
-
 end
