@@ -62,4 +62,8 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 
-gem "bulma-rails", "~> 0.8.0"
+ gem "geocoder"
+ 
+gem 'http'
+gem 'gon'
+gem 'dotenv-rails'
