@@ -17,6 +17,7 @@ class CreateRooms < ActiveRecord::Migration[6.0]
       t.integer :deposit,     null: false
       t.string :phone_number
       t.string  :mail
+      t.integer :rent_id       
       t.references :user,           null: false, foreign_key: true
       
       

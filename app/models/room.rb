@@ -2,7 +2,8 @@ class Room < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_many :comments,dependent: :destroy
-
+  has_many :reviews,dependent: :destroy
+  
   geocoded_by :address
   before_validation :geocode
 
@@ -36,6 +37,21 @@ class Room < ApplicationRecord
 
   validates :pet_id,:air_conditioner_id,:toilet_id,:bathroom_id,:kitchen_id, numericality: { other_than: 1 }
 
+  def avg_score
+    unless self.reviews.empty?
+      reviews.average(:score).round(1).to_f
+    else
+      0.0
+    end
+  end
+
+  def review_score_percentage
+    unless self.reviews.empty?
+      reviews.average(:score).round(1).to_f*100/5
+    else
+      0.0
+    end
+  end
 
 
 end

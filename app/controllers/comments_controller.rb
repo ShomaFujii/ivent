@@ -1,8 +1,14 @@
 class CommentsController < ApplicationController
 
   def create
-    comment = Comment.create(comment_params)
-    redirect_to room_path(comment.room.id)
+    @comment = Comment.new(comment_params)
+    if @comment.save
+    redirect_to room_path(@comment.room.id)
+    else 
+    @room = @comment.room
+    @comments = @room.comments
+    render "rooms/show"
+    end
   end
 
   private

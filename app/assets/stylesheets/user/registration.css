@@ -61,15 +61,7 @@
   resize: none;
 }
 
-.info-text {
-  color: #888;
-  font-size: 15px;
-  margin-top: 3px;
-}
 
-.form-info-header {
-  font-weight: bold;
-}
 
 .form-info-text {
   font-size: 15px;
@@ -121,13 +113,8 @@
 }
 
 
-.form-bottom-text {
-  font-size: 15px;
-  margin-top: 10px;
-  text-align: center;
-}
 
-.form-bottom-text:last-child {
+.last-child {
   margin: 0;
   padding-bottom: 50px;
 }
@@ -140,15 +127,16 @@
 .register-btn {
   width: 50%;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
-.register-red-btn {
+.register-blue-btn {
   width: 100%;
-  background: #ea352d;
-  border: 1px solid #ea352d;
+  background: skyblue;
+  border: none;
   color: #fff;
   line-height: 48px;
-  font-size: 14px;
+  font-size: 20px;
   cursor: pointer;
 }
 
