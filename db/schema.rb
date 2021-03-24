@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_175626) do
+ActiveRecord::Schema.define(version: 2021_03_11_233712) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -41,8 +41,21 @@ ActiveRecord::Schema.define(version: 2021_03_11_175626) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.string "content"
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_reviews_on_room_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "address", null: false
+    t.text "address", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.string "station", null: false
     t.text "discribe", null: false
     t.integer "price", null: false
@@ -52,9 +65,9 @@ ActiveRecord::Schema.define(version: 2021_03_11_175626) do
     t.integer "toilet_id", null: false
     t.integer "bathroom_id", null: false
     t.integer "kitchen_id", null: false
-    t.integer "deposit", null: false
     t.string "phone_number"
     t.string "mail"
+    t.boolean "rent"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -65,11 +78,6 @@ ActiveRecord::Schema.define(version: 2021_03_11_175626) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
-    t.string "first_name_character", null: false
-    t.string "last_name_character", null: false
-    t.string "first_name_kana", null: false
-    t.string "last_name_kana", null: false
-    t.date "birthday", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -80,5 +88,7 @@ ActiveRecord::Schema.define(version: 2021_03_11_175626) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "rooms"
+  add_foreign_key "reviews", "users"
   add_foreign_key "rooms", "users"
 end

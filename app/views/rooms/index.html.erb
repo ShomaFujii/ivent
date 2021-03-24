@@ -1,115 +1,34 @@
 <%= render "shared/header" %>
 <div class='main'>
 
-  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
+
   <div class='title-contents'>
     <h2 class='service-title'>
-      When you’re ready for a change, we’re ready to help.
+     Looking for a <span class = "service-title-roommate">roommate</span>?
     </h2>
-    <p class='service-explain'>
     
-    </p>
+        <h3 class = find-title>Find a room</h3>
+        <i class="fas fa-angle-down fa-2x" style="color: #339af0;"></i>
     <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
       <%= form.text_field :keyword, placeholder: "駅名などを入力してください", class: "input-box" %>
-     <%= form.submit "検索", class: "search-icon" %>
+     <%= form.submit "Let's go!", class: "search-icon" %>
     <% end %>
+    <h3 class = find-title>If you have a room</h3>
+    <i class="fas fa-angle-down fa-2x" style="color: #339af0;"></i>
 
-    <div class='store-btn'>
-      <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
-    </div>
+<a href=" /rooms/new" class="btn-circle-flat">Push a room</a>
+
+    <i class="fas fa-angle-double-down fa-2x" style="color: #339af0;"></i>
+    
   </div>
-  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
 
 
-  <%# FURIMAの特徴 %>
-  <div class='feature-contents'>
-    <h2 class='title'>
-      ROOM SHAREって何？
-    </h2>
-    <ul class='feature-lists'>
-      <li class='list'>
-        <%= image_tag "furima-intro04.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          簡単にルームメイトを探すことができる!
-        </h3>
-        <p class='feature-list-description'>
-          お子さんが親離れし、お部屋が余っている方にオススメ！
-          いくつかのお部屋の項目を入力していただくだけでお部屋の求人を出すことができます。
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro05.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          敷金、礼金なしで部屋を探すことができる!
-        </h3>
-        <p class='feature-list-description'>
-          １ヶ月から長いスパンまで住居期間はオーナー様と話し合いの上での決定となります。
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro06.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          サイトの使用料は完全無料！
-        </h3>
-        <p class='feature-list-description'>
-          手軽な登録を済ませるだけで完全無料でサイトを使用できます。
-        </p>
-      </li>
-    </ul>
-  </div>
-  <%# /FURIMAの特徴 %>
-
-  <%# FURIMAが選ばれる3つの理由部分 %>
-  <div class='select-reason-contents'>
-    <h2 class='title'>
-      FURIMAが選ばれる3つの理由
-    </h2>
-    <ul class='reason-lists'>
-      <li class='list'>
-        <%= image_tag "furima-intro01.png", class:"list-pict" %>
-        <span class='reason-list-number'>1</span>
-        <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>3分</span>
-          ですぐに出品
-        </h3>
-        <p class='reason-list-description'>
-          スマホで入力するだけで簡単に出品できる！
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro02.png", class:"list-pict" %>
-        <span class='reason-list-number'>2</span>
-        <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>シンプル</span>
-          で使いやすい
-        </h3>
-        <p class='reason-list-description'>
-          めんどくさい入力は必要なく、検索も購入もスムーズ！
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro03.png", class:"list-pict" %>
-        <span class='reason-list-number'>3</span>
-        <h3 class='reason-list-text'>
-          手数料
-          <span class='reason-list-blue-text'>業界最安</span>
-        </h3>
-        <p class='reason-list-description'>
-          10%でお得に出品&購入！
-        </p>
-      </li>
-    </ul>
-  </div>
-  <%# /FURIMAが選ばれる3つの理由部分 %>
-
-  <%# 画面中央の「会員数日本一位」帯部分 %>
   <div class='ad-contents'>
     <h2 class='ad-title'>
-      大人気ルームメイト求人サイト
+      People looking for roommates today! 
     </h2>
     <p class='ad-explain'>
-      は、最短１ヶ月から入居者を探すことができます
+      ルームメイト求人サイトです
     </p>
     <p class='ad-explain'>
       敷金、礼金なしなので学生や
@@ -118,77 +37,35 @@
       余っている部屋がある方は有効活用してみてはいかがでしょうか
     </p>
   </div>
-  <%# /画面中央の「会員数日本一位」帯部分 %>
 
-
-  <%# 商品一覧 %>
-  <div class='item-contents'>
-    <h2 class='title'>ご利用可能なお部屋</h2>
-    <%= link_to '新規投稿商品', "#", class: "subtitle" %>
-    <ul class='item-lists'>
-
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-     <% if @rooms.present? %>
-     <% @rooms.each do |room| %>
+  <%# FURIMAの特徴 %>
+  <div class='feature-contents'>
+    <h1 class='title'>
+      Why <span class = "subtitle">Roommates.com</span>?
+    </h1>
+    <ul class='feature-lists'>
       <li class='list'>
-        <%= link_to room_path(room.id) do %>
-        <div class='item-img-content'>
-          <%= image_tag room.image, class: "item-img" %>
-
-          <%# 商品が売れていればsold outを表示しましょう %>
-  
-          <%# //商品が売れていればsold outを表示しましょう %>
-
-        </div>
-
-
-        <div class='item-info'>
-          <h3 class='item-name'>
-            <%= room.station %>
-          </h3>
-          <div class='item-price'>
-            <span><%= room.price %>円<br></span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-            </div>
-          </div>
-        </div>
-        <% end %>
-        <% end %>
+        <%= image_tag "padlock.png", class:"list-pict" %>
+        <h2 class='feature-list-text'>
+          Safe and secure
+        </h3>
+        <p class='feature-list-description'>
+        お客様の情報は、安全なメッセージングセンターを通じて非公開にされています。
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "free-delivery.png", class:"list-pict" %>
+        <h2 class='feature-list-text'>
+          FREE to sign up
+        </h3>
+        <p class='feature-list-description'>
+          たった数分で登録が完了し、完全無料でサイトがご利用可能です。
+        </p>
       </li>
       
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
-      <% else %>
-      <li class='list'>
-        <%= link_to '#' do %>
-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            商品を出品してね！
-          </h3>
-          <div class='item-price'>
-            <span>99999999円<br>(税込み)</span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-            </div>
-          </div>
-        </div>
-        <% end %>
       </li>
-      <% end %>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
   </div>
-  <%# /商品一覧 %>
-</div>
-<%= link_to(new_room_path, class: 'purchase-btn') do %>
-  <span class='purchase-btn-text'>出品する</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-<% end %>
+
+  
 <%= render "shared/footer" %>

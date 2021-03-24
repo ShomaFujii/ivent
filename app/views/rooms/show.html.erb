@@ -8,6 +8,11 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @room.image ,class:"item-box-img" %>
+            <% if @room.rent.present?  %>
+             <div class='agreement'> 
+             <span>契約中</span> 
+              </div>
+            <% end %> 
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
@@ -15,10 +20,48 @@
       <span class="item-price">
         <%= "¥" + "#{@room.price}" %> 
       </span>
-      <span class="item-postage">
+      <span id ="a">
         <%= @room.address %>
       </span>
     </div>
+
+<div id=map></div> 
+
+<script>
+  let map
+
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @room.latitude %>, lng: <%= @room.longitude %>},
+          zoom: 12,
+      });
+
+
+  
+          (function(){
+          var contentString = "住所：<%= @room.address %>"; 
+
+          var marker = new google.maps.Marker({
+              position:{lat: <%= @room.latitude %>, lng: <%= @room.longitude %>},
+              map: map,
+              title: contentString
+          });
+
+          })();
+  
+      }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>&callback=initMap" async defer></script>
+
+<style type="text/css">
+  #map { height: 200px;
+         width: 70%;}
+</style>
+
+
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
  <% if user_signed_in? && (current_user.id == @room.user_id)  %>
@@ -30,6 +73,33 @@
     <%# <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
+
+      
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              ユーザー名: <%= @room.user.nickname %>
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content average-score">
+              <div class="star-rating">
+                <div class="star-rating-front" style="width:  <%= @room.review_score_percentage %>%">★★★★★</div>
+                <div class="star-rating-back">★★★★★</div>
+              </div>
+              <div class="average-score-display">
+            <%= @room.avg_score %>点（<%= @room.reviews.count %>件のレビュー）
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= render 'reviews/form', review: @review, room: @room %>
+      </div>
+    </div>
+  </div>
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
@@ -84,17 +154,7 @@
         <% end %>
       </tbody>
     </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
-      </div>
-      <div class="report-btn">
-        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な商品の通報</span>
-      </div>
-    </div>
-  </div>
+
   <%# /商品の概要 %>
 
   <div class="comment-box">
@@ -102,11 +162,7 @@
     <%= form_with(model: [@room, @comment], local: true) do |form| %>
     <%= form.text_area :text,class: "comment-text",placeholder: "コメントする" ,rows: "2" %>
      
-      <p class="comment-warn">
-        追加の情報や部屋の見学等はこちらで行ってください。
-        <br>
-        相手のことを考え丁寧なコメントを心がけましょう。
-      </p>
+      
       <%= form.submit "SEND",class: "comment-btn"%>
      <% end %>
     <% else %>
@@ -116,23 +172,16 @@
       <h4>＜コメント一覧></h4>
       <% @comments.each do |comment|%>
        <p>
-        <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+        <span><%= comment.user.nickname%>：</span>
           <%= comment.text %>
         </p>
       <% end %>
     </div>
   </div>
 
-  <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
-  </div>
+
   <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <a href="/rooms" class="another-item">TOP に戻る</a>
   <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
