@@ -227,3 +227,13 @@
 .inc {
   font-size: 13px;
 }
+
+.checkbox{
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.weight-bold-text-check{
+  text-align: center;
+  margin-top: 40px;
+}

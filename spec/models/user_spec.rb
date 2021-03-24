@@ -33,51 +33,6 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
-    it 'first_name_characterが空では登録できない' do
-      @user.first_name_character = ''
-      @user.valid? 
-      expect(@user.errors.full_messages).to include("First name character can't be blank")
-    end
-    it 'last_name_characterが空では登録できない' do
-      @user.last_name_character = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Last name character can't be blank")
-    end
-    it 'first_name_kanaが空では登録できない' do
-      @user.first_name_kana = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include("First name kana can't be blank")
-    end
-    it 'last_name_kanaが空では登録できない' do
-      @user.last_name_kana = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Last name kana can't be blank")
-    end
-    it 'birthdayが空では登録できない' do
-      @user.birthday = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Birthday can't be blank")
-    end
-    it 'first_name_charscterが全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
-      @user.first_name_character = 'kana'
-      @user.valid?
-      expect(@user.errors.full_messages).to include("First name character Full-width characters")
-    end
-    it 'last_name_charscterが全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
-      @user.last_name_character = 'kana'
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Last name character Full-width characters")
-    end
-    it 'first_name_kanaが全角（カタカナ）でなければ登録できない' do
-      @user.first_name_kana = '漢字'
-      @user.valid?
-      expect(@user.errors.full_messages).to include("First name kana Full-width katakana characters")
-    end
-    it 'last_name_kanaが全角（カタカナ）でなければ登録できない' do
-      @user.last_name_kana = '漢字'
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Last name kana Full-width katakana characters")
-    end
     it 'passwordとpassword_confirmationが一致しないと登録できない' do
       @user.password = 'a00000'
       @user.password_confirmation = 'b00000'

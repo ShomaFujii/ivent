@@ -290,3 +290,49 @@ font-weight: bold;
 
 
 
+.agreement {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  background-color: crimson;
+  transform: skewY(-10deg);
+}
+
+.agreement>span {
+  color: #FFF;
+  font-size: 45px;
+  font: bold;
+}
+
+.empty{
+  background-color: #dee6f0;
+  padding-bottom: 80px;
+}
+.no-result{
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 100px;
+
+}
+
+.no-result-sub{
+  padding-top:20px;
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.back-top{
+  font-size: 24px;
+  color: #3CCACE;
+  font-weight: bold;
+  text-align: center;
+}
+
+.back-top-area{
+  text-align: center;
+  background-color: #dee6f0;
+  padding-top:60px;
+  padding-bottom: 60px;
+}

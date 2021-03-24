@@ -1,6 +1,11 @@
     <%= render "shared/header"%>
 
-
+     <% if @rooms.empty? %>
+     <div class = "empty">
+      <h1 class = "no-result">NO RESULT</h1>
+      <p class = "no-result-sub">検索結果はありませんでした。</p>
+     </div>
+     <%end%>
 
     <ul class='item-lists'>
 
@@ -18,6 +23,12 @@
 
         <div class='item-img-content'>
           <%= image_tag room.image, class: "item-img" %>
+
+            <% if room.rent.present?  %>
+             <div class='agreement'> 
+             <span>契約中</span> 
+              </div>
+            <% end %> 
         </div>
 
 
@@ -29,10 +40,13 @@
             <span><%= room.price %>円<br></span>
           </div>
         </div>
-     
         <% end %>
       </li>
     <% end %>
     </ul>
+
+          <div class = "back-top-area">
+        <a href="/rooms" class="back-top">TOP に戻る</a>
+      </div>
 
     <%= render "shared/footer"%>

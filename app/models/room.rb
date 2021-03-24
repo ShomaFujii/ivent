@@ -22,10 +22,11 @@ class Room < ApplicationRecord
     validates :image
     validates :discribe
     validates :date
-    validates :price,:deposit,numericality: { greater_than:999 , less_than: 1000001},format:{with: /\A[0-9]+\z/}
-    if :phone_number.present?
-      validates :phone_number, format: {with: /\A\d{,11}\z/, message: "is invalid. without hyphen(-)"}
-    end
+    validates :price,numericality: { greater_than:999 , less_than: 1000001},format:{with: /\A[0-9]+\z/}
+  end
+
+  if :phone_number.present?
+    validates :phone_number, format: {with: /\A\d{,11}\z/, message: "is invalid. without hyphen(-)"}
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions

@@ -8,6 +8,11 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @room.image ,class:"item-box-img" %>
+            <% if @room.rent.present?  %>
+             <div class='agreement'> 
+             <span>契約中</span> 
+              </div>
+            <% end %> 
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>

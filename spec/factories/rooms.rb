@@ -1,19 +1,24 @@
 FactoryBot.define do
-  factory :item do
+  factory :room do
     discribe {Faker::Lorem.sentence}
-    name  {Faker::Name.initials(number: 2)}
-    condition_id  {2}
-    category_id {2}
-    shipping_fee_id {2}
-    prefecture_id {2}
-    delivery_date_id {2}
-    price {2000}
-    price {2000}
+    address {"大阪府堺市"}
+    station {"大阪駅"}
+    price  {100000}
+    date {"10月まで"}
+    pet_id {2}
+    air_conditioner_id {2}
+    toilet_id {2}
+    bathroom_id {2}
+    kitchen_id {2}
+    phone_number {"09098764456"}
+    mail {"soccer@.jp"}
+    rent {"1"}
+  
            
     association :user 
 
-    after(:build) do |item|
-      item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+    after(:build) do |room|
+      room.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
     end
 
   end

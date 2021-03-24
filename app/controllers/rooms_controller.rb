@@ -62,7 +62,7 @@ end
 end
 
  def room_params
-  params.require(:room).permit(:image,:address,:station,:date,:phone_number,:mail,:air_conditioner_id,:kitchen_id, :toilet_id,:bathroom_id,:pet_id,:discribe,:deposit,:price).merge(user_id: current_user.id)
+  params.require(:room).permit(:rent,:image,:address,:station,:date,:phone_number,:mail,:air_conditioner_id,:kitchen_id, :toilet_id,:bathroom_id,:pet_id,:discribe,:deposit,:price).merge(user_id: current_user.id)
  end
 
  def set_item
