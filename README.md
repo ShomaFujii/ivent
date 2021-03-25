@@ -102,23 +102,23 @@ password: test1234
 
 ruby,ruby on rails 
 
-フロントエンド
+<h2>フロントエンド</h2>
 
 Html,Scss,Javascript,JQuery
 
-本番環境
+<h2>本番環境</h2>
 
 Heroku
 
-ソース管理
+<h2>ソース管理</h2>
 
 Git,GitDesktop
 
-テスト
+<h2>テスト</h2>
 
 RSpec
 
-エディタ
+<h2>エディタ</h2>
 
 VScode
 
