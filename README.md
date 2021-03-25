@@ -54,6 +54,7 @@ password: test1234
 
 部屋の検索結果（該当の部屋がある時）
 
+![d937ba25fde716491b57019ee443369e](https://user-images.githubusercontent.com/78258431/112415268-e8644c80-8d66-11eb-9f2c-fc7bb92e0317.gif)
 
 
 # 利用方法
