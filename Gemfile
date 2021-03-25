@@ -63,7 +63,7 @@ gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 
  gem "geocoder"
- 
-gem 'http'
+
+
 gem 'gon'
 gem 'dotenv-rails'
