@@ -29,6 +29,10 @@ password: test1234
 mail: test@test2.com
 password: test1234
 
+# DEMO
+
+![0b6d1785d1704c65199ab02196773a86](https://user-images.githubusercontent.com/78258431/112413161-0c259380-8d63-11eb-8041-86a7e6ad52a6.gif)
+
 # 利用方法
 ・ヘッダーのサインアップボタンでアプリケーションにサインアップ
 
