@@ -96,6 +96,33 @@ password: test1234
 
 ・ユーザー同士のマッチング（部屋を探しているユーザーと部屋を貸しているユーザーとでの条件によるマッチング機能）
 
+# 使用技術（開発環境）
+
+バックエンド
+
+ruby,ruby on rails 
+
+フロントエンド
+
+Html,Scss,Javascript,JQuery
+
+本番環境
+
+Heroku
+
+ソース管理
+
+Git,GitDesktop
+
+テスト
+
+RSpec
+
+エディタ
+
+VScode
+
+
 # データベース設計
 
 ## users テーブル
