@@ -98,7 +98,7 @@ password: test1234
 
 # 使用技術（開発環境）
 
-<h1>バックエンド</h1>
+<h2>バックエンド</h2>
 
 ruby,ruby on rails 
 
