@@ -58,7 +58,7 @@ password: test1234
 
 部屋の検索結果がなかった時
 
-![画像名](sample5.png)
+![画像名](sample77.png)
 
 部屋の出品
 
