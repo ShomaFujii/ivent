@@ -44,6 +44,10 @@ password: test1234
 
 ![画像名](sample1.png)
 
+サインアップページ
+
+![画像名](sample2.png)
+
 # 利用方法
 
 
