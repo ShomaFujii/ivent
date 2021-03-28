@@ -1,5 +1,4 @@
-<%# cssは商品出品のものを併用しています。
-app/assets/stylesheets/items/new.css %>
+
 
 <div class="items-sell-contents">
   
@@ -7,11 +6,11 @@ app/assets/stylesheets/items/new.css %>
     <h2 class="items-sell-title">お部屋の情報を入力</h2>
     <%= form_with model: @room,local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%= render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
-    <%# 出品画像 %>
+    <%= render 'shared/error_messages', model: f.object %>
+
+
+
    <div class="img-upload">
       <div class="weight-bold-text">
         お部屋の画像
@@ -24,12 +23,8 @@ app/assets/stylesheets/items/new.css %>
         <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
-    <%# /出品画像 %>
-    <%# 商品名と商品説明 %>
+   
 
-    <%# /商品名と商品説明 %>
-
-    <%# 商品の詳細 %>
     <div class="new-items">
       <div class="weight-bold-text">
         住所
@@ -55,9 +50,8 @@ app/assets/stylesheets/items/new.css %>
       </div>
       <%= f.text_area :mail, class:"items-text", id:"item-name", maxlength:"40" %>
     </div>
-    <%# /商品の詳細 %>
 
-    <%# 配送について %>
+
     <div class="items-detail">
       <div class="weight-bold-text">お部屋の詳細</div>
       <div class="form">
@@ -96,10 +90,8 @@ app/assets/stylesheets/items/new.css %>
         </div>
         <%= f.text_area :discribe, class:"items-text", id:"item-info",rows:"7" ,maxlength:"1000" %>
     </div>
-    <%# /配送について %>
-
-    <%# 販売価格 %>
   
+
 
     <div class="sell-price">
       <div class="weight-bold-text question-text">
@@ -128,13 +120,12 @@ app/assets/stylesheets/items/new.css %>
     </div>
 
 
-    <%# /注意書き %>
-    <%# 下部ボタン %>
+  
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
       <%=link_to 'もどる', "#", class:"back-btn" %>
     </div>
-    <%# /下部ボタン %>
+
   </div>
   <% end %>
 

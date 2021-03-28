@@ -4,11 +4,9 @@
     <h2 class="items-sell-title">お部屋の情報を入力</h2>
     <%= form_with model: @room,url: rooms_path,local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%= render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
-    <%# 出品画像 %>
+    <%= render 'shared/error_messages', model: f.object %>
+    
     <div class="img-upload">
       <div class="weight-bold-text">
         お部屋の画像
@@ -21,8 +19,8 @@
         <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
-    <%# /出品画像 %>
-    <%# 商品名と商品説明 %>
+
+
     <div class="new-items">
       <div class="weight-bold-text">
         住所
@@ -89,7 +87,6 @@
         </div>
         <%= f.text_area :discribe, class:"items-text", id:"item-info",rows:"7" ,maxlength:"1000" %>
     </div>
-    <%# /商品の詳細 %>
 
   
 
@@ -120,18 +117,11 @@
     </div>
 
 
-    <%# /配送について %>
-
-    <%# 販売価格 %>
-   
-    <%# /販売価格 %>
-
-    <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "出品する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
-    <%# /下部ボタン %>
+
   </div>
   <% end %>
 
