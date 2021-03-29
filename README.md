@@ -18,7 +18,7 @@ Sharedroom.com
 ・部屋に対するレビュー
 
 # 本番環境
-"#######################"
+"https://ivent-34532.herokuapp.com/"
 
 # テスト用アカウント
 ・部屋出品用アカウント
@@ -200,4 +200,3 @@ VScode
 - belongs_to :room
 
 
-# ローカルでの動作方法
